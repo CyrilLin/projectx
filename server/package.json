@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "pm2 start app.js --watch",
+    "stop": "pm2 stop all"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
@@ -13,6 +14,7 @@
     "express": "~4.14.0",
     "morgan": "~1.7.0",
     "ot": "0.0.15",
+    "pm2": "^2.2.3",
     "serve-favicon": "~2.3.0",
     "socket.io": "^1.7.2"
   }
