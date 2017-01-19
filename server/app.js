@@ -2,12 +2,15 @@
 
 const debug = require('debug')('projectx:server');
 const http = require('http');
+const opn = require('opn');
 const SocketService = require('./sockets/service');
 let normalizePort = require('./helpers/util')
 
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+
 const routers = require('./controllers')
 const middlewares = require('./middlewares')
 
@@ -19,6 +22,11 @@ const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+  secret: 'cyril lin',
+  resave: false,
+  saveUninitialized: true
+}));
 
 let port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
@@ -74,4 +82,7 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
   console.log('Listening on ' + bind);
+
+  const uri = 'http://localhost:' + port
+  opn(uri)
 }
