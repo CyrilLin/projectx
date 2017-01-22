@@ -1,6 +1,7 @@
 {
   "name": "projectx-client",
   "version": "0.0.1",
+  "description": "Porject X Client",
   "private": true,
   "scripts": {
     "build": "cross-env NODE_ENV=production node build/build.js",

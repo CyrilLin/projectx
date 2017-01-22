@@ -1,4 +1,6 @@
-import * as types from '../mutation-types'
+import * as types from './mutation-types'
+import * as actions from './actions'
+import * as getters from './getters'
 
 const state = {
   device: {
@@ -37,5 +39,7 @@ const mutations = {
 
 export default {
   state,
+  actions,
+  getters,
   mutations
 }

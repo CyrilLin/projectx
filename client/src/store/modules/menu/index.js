@@ -1,4 +1,7 @@
-import * as types from '../../mutation-types'
+import * as types from './mutation-types'
+import * as actions from './actions'
+import * as getters from './getters'
+
 import lazyLoading from './lazyLoading'
 import charts from './charts'
 import uifeatures from './uifeatures'
@@ -69,5 +72,7 @@ const mutations = {
 
 export default {
   state,
+  actions,
+  getters,
   mutations
 }
