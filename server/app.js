@@ -36,6 +36,8 @@ app.use(session({
 
 let port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+
+app.use(middlewares.handlerXSS);
 app.use(routers);
 
 // catch 404 and forward to error handler
