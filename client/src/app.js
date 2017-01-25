@@ -27,7 +27,7 @@ router.beforeEach((route, redirect, next) => {
     store.commit('TOGGLE_SIDEBAR', false)
   }
 
-  if (route.path !== '/login' && !state.user.isLogin) {
+  if (route.path !== '/login' && !state.user.success) {
     return next('/login')
   }
 

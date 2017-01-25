@@ -14,7 +14,13 @@
             <i class="fa fa-lock"></i>
           </p>
           <p class="control">
-            <button class="button is-success" @click="submit(user)">
+            <label class="checkbox">
+              <input type="checkbox">
+              Remember me
+            </label>
+          </p>
+          <p class="control">
+            <button class="button is-success" @click="login(user)">
               Login
             </button>
           </p>
@@ -43,10 +49,7 @@ export default{
   }),
 
   methods: {
-    ...mapActions({login: 'login'}),
-    submit (user) {
-      this.login(user)
-    }
+    ...mapActions({login: 'login'})
   },
   watch: {
     isLogin () {

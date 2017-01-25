@@ -1,27 +1,19 @@
 import {USER_LOGIN, USER_LOGOUT} from './mutation-types'
 import * as actions from './actions'
 import * as getters from './getters'
+import Vue from 'vue'
 
-const state = {
-  user: {
-    email: null,
-    userId: null,
-    password: null
-  },
-  isLogin: false,
-  message: null
-}
+const state = JSON.parse(window.localStorage.getItem('user')) || {}
 
 const mutations = {
   [USER_LOGIN] (state, user) {
-    state.user = user.user
-    state.isLogin = user.success
-    state.message = user.message
+    window.localStorage.setItem('user', JSON.stringify(user))
+    Object.assign(state, user)
   },
 
   [USER_LOGOUT] (state, user) {
-    state.user = {}
-    state.isLogin = false
+    window.localStorage.removeItem('user')
+    Object.keys(state).forEach(k => Vue.delete(state, k))
   }
 }
 
