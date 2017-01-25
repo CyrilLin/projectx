@@ -12,6 +12,9 @@ Vue.use(NProgress)
 
 // Enable devtools
 Vue.config.devtools = true
+// set the API root so we can use relative url's in our actions.
+Vue.http.options.root = 'http://localhost:3000'
+Vue.http.options.emulateJSON = true
 
 sync(store, router)
 
@@ -23,6 +26,11 @@ router.beforeEach((route, redirect, next) => {
   if (state.app.device.isMobile && state.app.sidebar.opened) {
     store.commit('TOGGLE_SIDEBAR', false)
   }
+
+  if (route.path !== '/login' && !state.user.isLogin) {
+    return next('/login')
+  }
+
   next()
 })
 

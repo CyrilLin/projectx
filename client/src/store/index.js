@@ -4,6 +4,7 @@ import pkg from 'package'
 
 import app from './modules/app'
 import menu from './modules/menu'
+import user from './modules/user'
 
 Vue.use(Vuex)
 
@@ -11,7 +12,8 @@ const store = new Vuex.Store({
   strict: true,  // process.env.NODE_ENV !== 'development',
   modules: {
     app,
-    menu
+    menu,
+    user
   },
   getters: {
     pkg: state => state.pkg

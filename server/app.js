@@ -13,12 +13,14 @@ const session = require('express-session');
 
 const routers = require('./controllers')
 const middlewares = require('./middlewares')
-
+const mongoose = require('mongoose')
 
 /**
  *  init db connection
  */
-const db = require('mongoose').connect('mongodb://localhost:27017/projectx');
+const db = mongoose.connect('mongodb://localhost:27017/projectx');
+mongoose.connection.on('error', (err) => console.log(err))
+mongoose.connection.on('connected', () => console.log('DB connected'))
 
 /**
  * Create HTTP server.

@@ -3,14 +3,14 @@ const auth = require('../middlewares/auth');
 const User = require('../models/user');
 
 router.post('/login', (req, res) =>{
-  let query = {userId:req.body.userName, password: req.body.password};
-
+  let query = {email:req.body.email, password: req.body.password};
+  console.log(query);
   User.find(query, (err, users) =>{
-    if (users && users.count == 1) {
+    if (users && users.length == 1) {
       req.session.user = users[0];
-      res.json({message:'Login Success', user:users[0]});
+      res.json({success: true, message: 'Login Success', user:users[0]});
     } else {
-      res.json({message:'Login Failed'});
+      res.json({success: false, message:'Login Failed', err});
     }
   });
 });
