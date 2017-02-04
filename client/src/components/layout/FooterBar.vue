@@ -22,7 +22,7 @@ export default {
 @import '~bulma/sass/utilities/mixins';
 
 .footer {
-  margin-left: 180px;
+  margin-left: 200px;
 
   @include mobile() {
     margin-left: 0;
