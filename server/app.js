@@ -14,6 +14,9 @@ const session = require('express-session');
 const routers = require('./controllers')
 const middlewares = require('./middlewares')
 const mongoose = require('mongoose')
+const bluebird = require('bluebird')
+
+mongoose.Promise = bluebird
 
 /**
  *  init db connection

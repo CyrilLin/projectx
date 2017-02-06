@@ -8,6 +8,7 @@
     "stopDev": "pm2 stop all"
   },
   "dependencies": {
+    "bluebird": "^3.4.7",
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
