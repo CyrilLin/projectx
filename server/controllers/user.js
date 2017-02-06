@@ -3,6 +3,7 @@ const auth = require('../middlewares/auth')
 const User = require('../models/user')
 const Candidate = require('../models/candidate.js')
 const _ = require('lodash')
+const interviewRoute = require('./interview.js')
 
 router.post('/login', (req, res) =>{
   let query = _.pick(req.body, ['email', 'password'])
@@ -54,5 +55,7 @@ router.post('/candidates/:id', (req, res) =>{
     res.json({success: true, message: 'Update success!'})
   })
 })
+
+router.use(interviewRoute)
 
 module.exports = router
